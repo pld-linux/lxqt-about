@@ -5,15 +5,15 @@
 
 Summary:	lxqt-about
 Name:		lxqt-about
-Version:	0.8.0
-Release:	0.2
+Version:	0.10.0
+Release:	1
 License:	GPLv2 and LGPL-2.1+
 Group:		X11/Applications
-Source0:	http://lxqt.org/downloads/lxqt/%{version}/%{name}-%{version}.tar.xz
-# Source0-md5:	6c5eed82fffc58a508dcd35531e65376
+Source0:	http://downloads.lxqt.org/lxqt/%{version}/%{name}-%{version}.tar.xz
+# Source0-md5:	6de6c3f0ab13bb65fb94abe508a90f3a
 URL:		http://www.lxqt.org/
 BuildRequires:	cmake >= 2.8.3
-BuildRequires:	liblxqt-devel >= 0.8.0
+BuildRequires:	liblxqt-devel >= 0.10.0
 BuildRequires:	xz-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -27,7 +27,6 @@ lxqt-about.
 install -d build
 cd build
 %cmake \
-	-DUSE_QT5=ON \
 	../
 
 %{__make}
@@ -38,13 +37,16 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} -C build install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+%find_lang %{name} --with-qm
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %post	-p /sbin/ldconfig
 %postun	-p /sbin/ldconfig
 
-%files
+%files -f %{name}.lang
 %defattr(644,root,root,755)
+%dir %{_datadir}/lxqt/translations/%{name}
 %attr(755,root,root) %{_bindir}/lxqt-about
 %{_desktopdir}/lxqt-about.desktop
