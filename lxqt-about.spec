@@ -6,15 +6,15 @@
 Summary:	About application for LXQt desktop suite
 Summary(pl.UTF-8):	Informacje o środowisku graficznym LXQt
 Name:		lxqt-about
-Version:	2.3.0
+Version:	2.4.0
 Release:	1
 License:	GPLv2 and LGPL-2.1+
 Group:		X11/Applications
 Source0:	https://github.com/lxqt/lxqt-about/releases/download/%{version}/%{name}-%{version}.tar.xz
-# Source0-md5:	e6046469ea8838b65b5622d52bb280c1
+# Source0-md5:	12336bf5f198694c8a9736c4565c9a80
 URL:		http://www.lxqt.org/
 BuildRequires:	cmake >= 3.18.0
-BuildRequires:	liblxqt-devel >= 2.3.0
+BuildRequires:	liblxqt-devel >= 2.4.0
 BuildRequires:	xz-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
